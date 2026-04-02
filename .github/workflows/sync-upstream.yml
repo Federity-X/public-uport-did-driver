@@ -32,13 +32,13 @@ jobs:
           git fetch upstream --prune
 
           # Check if there are new commits
-          UPSTREAM=$(git rev-parse upstream/main)
+          UPSTREAM=$(git rev-parse upstream/master)
           LOCAL=$(git rev-parse HEAD)
 
           if [ "$UPSTREAM" != "$LOCAL" ]; then
             echo "New commits found, syncing..."
             # Hard reset to match upstream exactly
-            git reset --hard upstream/main
+            git reset --hard upstream/master
             # Force push to origin
             git push origin main-upstream --force
           else
